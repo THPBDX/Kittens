@@ -4436,6 +4436,7 @@ input[type="button"].btn-block {
   -ms-flex-pack: justify;
   justify-content: space-between;
   padding: 1.0625rem 0;
+  flex-direction: row;
 }
 
 .navbar > .container,
@@ -4458,13 +4459,15 @@ input[type="button"].btn-block {
   padding-top: 0;
   padding-bottom: 0;
   margin-right: 0;
-  font-size: 1rem;
+  font-size: 1.5rem;
+  letter-spacing: 2.5px;
   line-height: inherit;
   white-space: nowrap;
 }
 
 .navbar-brand:hover, .navbar-brand:focus {
   text-decoration: none;
+  color: black;
 }
 
 .navbar-nav {
@@ -4478,6 +4481,7 @@ input[type="button"].btn-block {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  justify-content: flex-end !important;
 }
 
 .navbar-nav .nav-link {
@@ -10385,6 +10389,12 @@ h6, dt, .h6 {
 
 .navbar ul > li:hover > a.disabled-link {
   color: #8c8c8c !important;
+}
+
+li .nav-item {
+	display: flex;
+	justify-content: flex-end;
+	background-color: blue;
 }
 
 ul, ol {
