@@ -1,0 +1,29 @@
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Portfolio Item Heading -->
+  <h1 class="my-4"><%=@kitten.name%></h1>
+
+  <!-- Portfolio Item Row -->
+  <div class="row">
+
+    <div class="col-md-8">
+      <%= image_tag("#{@kitten.photo}", class: "kitten-photo rounded", alt: "#{@kitten.breed}") %>
+    </div>
+
+    <div class="col-md-4">
+      <h3 class="my-3"><%=@kitten.breed%></h3>
+      <p><%=@kitten.description%></p>
+      <h3 class="my-3">Kitten Details</h3>
+      <ul>
+        <li>Age: <%=@kitten.age%></li>
+        <li>Origin: <%=@kitten.origin%></li>
+        <li>Price: <%=@kitten.price%> €</li>
+      </ul>
+    </div>
+
+  </div>
+  <!-- /.row -->
+
+</div>
+<!-- /.container -->

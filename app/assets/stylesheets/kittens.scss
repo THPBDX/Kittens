@@ -6,9 +6,17 @@
 //	border: 1px solid gray;
 //}
 
-.kitten-photo {
+.kitten-thumbnail {
     width: 200px;
     height: 200px;
     background-size: cover;
+    background-color: red;
     background-position: left top;
+}
+
+.kitten-photo {
+    background-color: #00ff00;
+    
+    max-width: 700px;
+    background-size: cover;
 }
