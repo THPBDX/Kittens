@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root "home#index"
+  get 'kittens/index'
+  root "kittens#index"
   devise_for :users
-  resources :home 
+  resources :home
+  resources :kittens
 end
