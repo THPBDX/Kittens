@@ -10,14 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_04_142546) do
+ActiveRecord::Schema.define(version: 2019_03_07_185902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "carts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
+  create_table "join_table_cart_kittens", force: :cascade do |t|
+    t.bigint "cart_id"
+    t.bigint "kitten_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_join_table_cart_kittens_on_cart_id"
+    t.index ["kitten_id"], name: "index_join_table_cart_kittens_on_kitten_id"
+  end
+
+  create_table "join_table_order_kittens", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "kitten_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["kitten_id"], name: "index_join_table_order_kittens_on_kitten_id"
+    t.index ["order_id"], name: "index_join_table_order_kittens_on_order_id"
+  end
+
   create_table "kittens", force: :cascade do |t|
     t.string "photo"
-    t.string "description"
+    t.text "description"
     t.string "name"
     t.integer "age"
     t.string "breed"
@@ -25,6 +52,13 @@ ActiveRecord::Schema.define(version: 2019_03_04_142546) do
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,4 +73,10 @@ ActiveRecord::Schema.define(version: 2019_03_04_142546) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "carts", "users"
+  add_foreign_key "join_table_cart_kittens", "carts"
+  add_foreign_key "join_table_cart_kittens", "kittens"
+  add_foreign_key "join_table_order_kittens", "kittens"
+  add_foreign_key "join_table_order_kittens", "orders"
+  add_foreign_key "orders", "users"
 end
