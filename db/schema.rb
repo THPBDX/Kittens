@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_04_142546) do
+ActiveRecord::Schema.define(version: 2019_03_07_161813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "carts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "kitten_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["kitten_id"], name: "index_carts_on_kitten_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
 
   create_table "kittens", force: :cascade do |t|
     t.string "photo"
@@ -39,4 +49,6 @@ ActiveRecord::Schema.define(version: 2019_03_04_142546) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "carts", "kittens"
+  add_foreign_key "carts", "users"
 end
