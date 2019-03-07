@@ -14,10 +14,14 @@ ActiveRecord::Schema.define(version: 2019_03_07_185902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
   create_table "carts", force: :cascade do |t|
     t.bigint "user_id"
+    t.bigint "kitten_id"
+    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["kitten_id"], name: "index_carts_on_kitten_id"
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
@@ -43,7 +47,7 @@ ActiveRecord::Schema.define(version: 2019_03_07_185902) do
 
   create_table "kittens", force: :cascade do |t|
     t.string "photo"
-    t.text "description"
+    t.string "description"
     t.string "name"
     t.integer "age"
     t.string "breed"
@@ -72,6 +76,7 @@ ActiveRecord::Schema.define(version: 2019_03_07_185902) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "carts", "kittens"
   add_foreign_key "carts", "users"
   add_foreign_key "join_table_cart_kittens", "carts"
   add_foreign_key "join_table_cart_kittens", "kittens"
