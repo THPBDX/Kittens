@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 2019_03_07_185902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
   create_table "carts", force: :cascade do |t|
     t.bigint "user_id"
     t.datetime "created_at", null: false
