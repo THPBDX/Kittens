@@ -13,6 +13,6 @@ Alors parlons de choses positives et donc des fonctionalités que nous avons ré
     ° Une page profil pour les users
 Pour tester Stripe je vous propose un numéro de carte : 4242424242424242
 Normalement tout marche en production.
-Je fait appel à votre sympathie afin de ne pas passer renégat mdr .
+#### Je fait appel à votre sympathie afin de ne pas passer renégat mdr .
 
-Make with ❤ by @Cris (notre renégat d'honneur) and @Morgane.
+Make with ❤ by @Cris (renegade of honor) and @Morgane.
